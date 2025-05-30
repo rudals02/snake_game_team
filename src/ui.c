@@ -1,4 +1,4 @@
- #include "../include/ui.h"
+#include "../include/ui.h"
 #include <stdio.h>
 #include <stdlib.h>
 

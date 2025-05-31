@@ -1,2 +1,32 @@
+#ifndef PHYSICS_H   //파일 중복 포함 방지
+#define PHYSICS_H
+
+#include <stdlib.h>
+
+#define WIDTH 80    //게임 화면 가로, 세로 크기 정의
+#define HEIGHT 24
+
+//좌표(x, y)
+typedef struct
+{
+    int x, y; //x: 가로 위치, y: 세로 위치
+} position;
 
 
+//사과의 위치와 크기
+typedef struct
+{
+    position pos; //사과 위치
+    int size;  //사과 크기(뱀이 먹으면 얼마나 길어지는지)
+}Size;
+
+//사과 랜덤 위치와 크기(1~3)생성
+Size RandomAppleSize();
+
+//뱀 머리가 벽에 부딪혔는지-> 반환값) 1->충돌, 0->정상
+int CrushedToWall(position snakeHead);
+
+//뱀 이동시키고 벽에 충돌했는지, 충돌하면 gameover=1
+void move_snake();
+
+#endif

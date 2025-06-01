@@ -1,10 +1,8 @@
-// snake.c
 #include "snake.h"
 #include "physics.h"
 #include "score.h"
 #include "ui.h"
 #include <stdlib.h>
-#include <string.h>
 
 // 최대 뱀 길이
 #define MAX_SNAKE_LENGTH 100

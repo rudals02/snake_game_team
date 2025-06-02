@@ -1,4 +1,4 @@
-#include <conio.h>  // position, Size, direction, WIDTH, HEIGHT 등을 제각각 선언하게 되면 타입 충돌이나 중복 정의가 생길 수 있기에 사용용
+#include <conio.h>  // position, Size, direction, WIDTH, HEIGHT 등을 제각각 선언하게 되면 타입 충돌이나 중복 정의가 생길 수 있기에 사용
 #include <windows.h>
 #include "snake.h"
 #include "ui.h"

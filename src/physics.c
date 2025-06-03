@@ -21,11 +21,5 @@ extern position snake[];  //뱀 몸(snake[0]이 머리)
 extern int gameover;  //게임 종료 여부
 
 
-//벽 충돌 검사
-void move_snake(){
-    if (CrushedToWall(snake[0])){
-        gameover=1;
-    }
-}
 
 

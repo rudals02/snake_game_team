@@ -3,7 +3,7 @@
 #include "score.h"
 #include "ui.h"
 #include <stdlib.h>
-#incldue <time.h>
+#include <time.h>
 
 // 최대 뱀 길이
 #define MAX_SNAKE_LENGTH 100

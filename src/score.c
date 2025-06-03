@@ -3,7 +3,7 @@
 
 int score = 0;
 
-int Snake_eat_apple
+int Snake_eat_apple;
 
 //뱀이 사과와 닿으면 1
 int Snake_eat_apple(position snakeHead, Size apple) 

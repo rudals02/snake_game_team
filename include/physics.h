@@ -26,7 +26,6 @@ Size RandomAppleSize();
 //뱀 머리가 벽에 부딪혔는지-> 반환값) 1->충돌, 0->정상
 int CrushedToWall(position snakeHead);
 
-//뱀 이동시키고 벽에 충돌했는지, 충돌하면 gameover=1
-void move_snake();
+
 
 #endif

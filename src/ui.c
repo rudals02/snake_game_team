@@ -1,39 +1,31 @@
 #include "ui.h"
 #include "score.h"
 #include <stdio.h>
-#include <windows.h>
+#include <ncurses.h>  // windows.h 대신 ncurses.h 사용
 
 // 게임 상태 변수
 GameState game_state = GAME_MENU;
 
-// 커서 위치 이동 (Windows 콘솔)
-void ui_gotoxy(int x, int y) {
-    COORD coord;
-    coord.X = x;
-    coord.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
-
 // 화면 초기화
 void ui_init(void) {
-    // 커서 숨기기
-    CONSOLE_CURSOR_INFO cursorInfo;
-    GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
-    cursorInfo.bVisible = FALSE;
-    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
+    // ncurses 초기화
+    initscr();              // ncurses 시작
+    noecho();               // 키 입력 시 화면에 표시 안함
+    curs_set(0);            // 커서 숨기기
+    keypad(stdscr, TRUE);   // 특수 키 (화살표 등) 사용 가능
+    nodelay(stdscr, TRUE);  // 입력 대기하지 않음
     
     ui_clear();
 }
 
 // 화면 지우기
 void ui_clear(void) {
-    system("cls");
+    clear();  // ncurses의 clear 함수
 }
 
 // 특정 위치에 문자 출력
 void ui_draw_at(int x, int y, char ch) {
-    ui_gotoxy(x, y);
-    printf("%c", ch);
+    mvaddch(y, x, ch);  // ncurses는 y, x 순서임에 주의
 }
 
 // 게임 화면 테두리 그리기
@@ -58,39 +50,29 @@ void ui_draw_border(void) {
 
 // 점수 및 게임 정보 표시
 void ui_draw_info(void) {
-    ui_gotoxy(0, HEIGHT + 1);
-    printf("점수: %d  |  길이: %d  |  [P] 일시정지  |  [Q] 종료", score, snake_length);
+    mvprintw(HEIGHT + 1, 0, "점수: %d  |  길이: %d  |  [P] 일시정지  |  [Q] 종료", score, snake_length);
 }
 
 // 메뉴 화면 표시
 void ui_draw_menu(void) {
     ui_clear();
-    ui_gotoxy(WIDTH/2 - 10, HEIGHT/2 - 3);
-    printf("=== 스네이크 게임 ===");
-    ui_gotoxy(WIDTH/2 - 8, HEIGHT/2);
-    printf("[SPACE] 게임 시작");
-    ui_gotoxy(WIDTH/2 - 8, HEIGHT/2 + 2);
-    printf("[Q] 게임 종료");
+    mvprintw(HEIGHT/2 - 3, WIDTH/2 - 10, "=== 스네이크 게임 ===");
+    mvprintw(HEIGHT/2, WIDTH/2 - 8, "[SPACE] 게임 시작");
+    mvprintw(HEIGHT/2 + 2, WIDTH/2 - 8, "[Q] 게임 종료");
 }
 
 // 게임 오버 화면 표시
 void ui_draw_gameover(void) {
-    ui_gotoxy(WIDTH/2 - 5, HEIGHT/2 - 2);
-    printf("GAME OVER!");
-    ui_gotoxy(WIDTH/2 - 8, HEIGHT/2);
-    printf("최종 점수: %d", score);
-    ui_gotoxy(WIDTH/2 - 10, HEIGHT/2 + 2);
-    printf("[SPACE] 다시 시작");
-    ui_gotoxy(WIDTH/2 - 8, HEIGHT/2 + 3);
-    printf("[Q] 게임 종료");
+    mvprintw(HEIGHT/2 - 2, WIDTH/2 - 5, "GAME OVER!");
+    mvprintw(HEIGHT/2, WIDTH/2 - 8, "최종 점수: %d", score);
+    mvprintw(HEIGHT/2 + 2, WIDTH/2 - 10, "[SPACE] 다시 시작");
+    mvprintw(HEIGHT/2 + 3, WIDTH/2 - 8, "[Q] 게임 종료");
 }
 
 // 일시정지 화면 표시
 void ui_draw_pause(void) {
-    ui_gotoxy(WIDTH/2 - 5, HEIGHT/2);
-    printf("일시 정지");
-    ui_gotoxy(WIDTH/2 - 8, HEIGHT/2 + 2);
-    printf("[P] 계속하기");
+    mvprintw(HEIGHT/2, WIDTH/2 - 5, "일시 정지");
+    mvprintw(HEIGHT/2 + 2, WIDTH/2 - 8, "[P] 계속하기");
 }
 
 // 전체 게임 화면 그리기
@@ -117,5 +99,10 @@ void ui_refresh(void) {
             break;
     }
     
-    ui_gotoxy(0, HEIGHT + 3);  // 커서를 화면 밖으로
+    refresh();  // ncurses 화면 업데이트
+}
+
+// 프로그램 종료 시 호출 (ncurses 정리)
+void ui_cleanup(void) {
+    endwin();  // ncurses 종료
 }

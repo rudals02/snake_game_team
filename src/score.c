@@ -9,7 +9,7 @@ int Snake_eat_apple
 int Snake_eat_apple(position snakeHead, Size apple) 
 {
      return (snakeHead.x >= apple.pos.x - apple.size && snakeHead.x <= apple.pos.x + apple.size &&
-        snakeHead.y >= apple.pos.y - apple.size && snakeHead.y <= apple.pos.y + apple.size)
+        snakeHead.y >= apple.pos.y - apple.size && snakeHead.y <= apple.pos.y + apple.size);
 }
 
 extern position snake[];

@@ -55,29 +55,29 @@ void ui_draw_border(void) {
 
 // 점수 및 게임 정보 표시
 void ui_draw_info(void) {
-    mvprintw(HEIGHT + 1, 0, "점수: %d  |  길이: %d  |  [P] 일시정지  |  [Q] 종료", score, snake_length);
+    mvprintw(HEIGHT + 1, 0, "score: %d  |  length: %d  |  [P] Pause  |  [Q] Quit", score, snake_length);
 }
 
 // 메뉴 화면 표시
 void ui_draw_menu(void) {
     ui_clear();
-    mvprintw(HEIGHT/2 - 3, WIDTH/2 - 10, "=== 스네이크 게임 ===");
-    mvprintw(HEIGHT/2, WIDTH/2 - 8, "[SPACE] 게임 시작");
-    mvprintw(HEIGHT/2 + 2, WIDTH/2 - 8, "[Q] 게임 종료");
+    mvprintw(HEIGHT/2 - 3, WIDTH/2 - 10, "=== snake game ===");
+    mvprintw(HEIGHT/2, WIDTH/2 - 8, "[SPACE] game start");
+    mvprintw(HEIGHT/2 + 2, WIDTH/2 - 8, "[Q] Quit game");
 }
 
 // 게임 오버 화면 표시
 void ui_draw_gameover(void) {
     mvprintw(HEIGHT/2 - 2, WIDTH/2 - 5, "GAME OVER!");
-    mvprintw(HEIGHT/2, WIDTH/2 - 8, "최종 점수: %d", score);
-    mvprintw(HEIGHT/2 + 2, WIDTH/2 - 10, "[SPACE] 다시 시작");
-    mvprintw(HEIGHT/2 + 3, WIDTH/2 - 8, "[Q] 게임 종료");
+    mvprintw(HEIGHT/2, WIDTH/2 - 8, "final score: %d", score);
+    mvprintw(HEIGHT/2 + 2, WIDTH/2 - 10, "[SPACE] restart");
+    mvprintw(HEIGHT/2 + 3, WIDTH/2 - 8, "[Q] Quit game");
 }
 
 // 일시정지 화면 표시
 void ui_draw_pause(void) {
-    mvprintw(HEIGHT/2, WIDTH/2 - 5, "일시 정지");
-    mvprintw(HEIGHT/2 + 2, WIDTH/2 - 8, "[P] 계속하기");
+    mvprintw(HEIGHT/2, WIDTH/2 - 5, "Pause");
+    mvprintw(HEIGHT/2 + 2, WIDTH/2 - 8, "[P] Progress");
 }
 
 // 전체 게임 화면 그리기

@@ -3,6 +3,11 @@
 #include <stdio.h>
 #include <ncurses.h>  // windows.h 대신 ncurses.h 사용
 
+extern int snake_length;
+
+// 외부 함수 선언 추가  
+void draw_snake(void);
+void draw_apple(void);
 // 게임 상태 변수
 GameState game_state = GAME_MENU;
 

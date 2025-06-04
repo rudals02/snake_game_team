@@ -1,7 +1,7 @@
 #include "ui.h"
 #include "score.h"
 #include <stdio.h>
-#include <ncurses.h>  // windows.h 대신 ncurses.h 사용
+#include <ncurses.h>  
 
 extern int snake_length;
 
@@ -18,7 +18,7 @@ void ui_init(void) {
     noecho();               // 키 입력 시 화면에 표시 안함
     curs_set(0);            // 커서 숨기기
     keypad(stdscr, TRUE);   // 특수 키 (화살표 등) 사용 가능
-    nodelay(stdscr, TRUE);  // 입력 대기하지 않음
+    nodelay(stdscr, TRUE);  // 입력 대기 X
     
     ui_clear();
 }
@@ -30,7 +30,7 @@ void ui_clear(void) {
 
 // 특정 위치에 문자 출력
 void ui_draw_at(int x, int y, char ch) {
-    mvaddch(y, x, ch);  // ncurses는 y, x 순서임에 주의
+    mvaddch(y, x, ch);  // ncurses는 y, x 순서
 }
 
 // 게임 화면 테두리 그리기

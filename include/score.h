@@ -2,7 +2,6 @@
 #define SCORE_H
 
 #include "physics.h"
-#include <stdlib.h>
 
 extern int score;
 //뱀이 사과를 먹었는지 1->먹음 0->안먹음

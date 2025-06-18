@@ -46,7 +46,7 @@ void init_snake(void) {
     srand(time(NULL));
 
     // 첫 사과 생성
-    apple = RandomAppleSize();
+    apple = RandomApple();
 }
 
 // 뱀 이동
@@ -73,8 +73,8 @@ void move_snake(void) {
     // 사과 먹었는지 확인 및 점수 증가
     if (Snake_eat_apple(snake[0], apple)) {
         increase_score();
-        grow_snake(apple.size);
-        apple = RandomAppleSize();  // 새로운 사과 생성
+        grow_snake(apple.apple_size);
+        apple = RandomApple();  // 새로운 사과 생성
     }
 
     // 자기 몸과 충돌 확인
@@ -110,10 +110,10 @@ void draw_snake(void) {
 
 // 사과 그리기
 void draw_apple(void) {
-    for (int dx = -apple.size; dx <= apple.size; dx++) {
-        for (int dy = -apple.size; dy <= apple.size; dy++) {
-            int ax = apple.pos.x + dx;
-            int ay = apple.pos.y + dy;
+    for (int dx = -apple.apple_size; dx <= apple.apple_size; dx++) {
+        for (int dy = -apple.apple_size; dy <= apple.apple_size; dy++) {
+            int ax = apple.apple_pos.x + dx;
+            int ay = apple.apple_pos.y + dy;
 
             // 범위 내에서만 출력
             if (ax >= 0 && ax < WIDTH && ay >= 0 && ay < HEIGHT) {

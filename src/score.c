@@ -7,8 +7,8 @@ int score = 0;
 //뱀이 사과와 닿으면 점수 추가하기
 int Snake_eat_apple(position snakeHead, Size apple) 
 {
-     return (snakeHead.x >= apple.pos.x - apple.size && snakeHead.x <= apple.pos.x + apple.size &&
-        snakeHead.y >= apple.pos.y - apple.size && snakeHead.y <= apple.pos.y + apple.size);
+     return (snakeHead.x >= apple.apple_pos.x - apple.apple_size && snakeHead.x <= apple.apple_pos.x + apple.apple_size &&
+        snakeHead.y >= apple.apple_pos.y - apple.apple_size && snakeHead.y <= apple.apple_pos.y + apple.apple_size);
 }
 
 extern position snake[];
@@ -20,6 +20,6 @@ void increase_score()
 {
      if (Snake_eat_apple(snake[0], apple))
      {
-          score += apple.size * 10;
+          score += apple.apple_size * 10;
      }
 }

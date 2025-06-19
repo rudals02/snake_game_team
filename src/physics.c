@@ -12,7 +12,7 @@ Size RandomApple(){
 
 extern Size RandomApple_asm();
 
-//벽 충동 검사
+//벽 충돌 검사
 int CrushedToWall(position snakeHead){
     if (snakeHead.x<0 || snakeHead.x>=WIDTH ||snakeHead.y<0 || snakeHead.y>=HEIGHT){
         return 1;

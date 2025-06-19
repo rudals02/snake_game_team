@@ -33,5 +33,5 @@ apple_size:
 
             mov     r0, sp @r0<-sp
             add     sp, sp, #12 @sp<-sp+12
-            pop{pc}
+            pop     {pc}
 

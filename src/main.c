@@ -6,37 +6,48 @@
 #define FRAME_DELAY 100
 
 void process_input() {
-    int ch = getch();
-    switch (ch) {
-        case 'w': set_direction(UP); break;
-        case 's': set_direction(DOWN); break;
-        case 'a': set_direction(LEFT); break;
-        case 'd': set_direction(RIGHT); break;
-        case 'p':
-        case 'P':
-            if (game_state == GAME_PLAYING) game_state = GAME_PAUSED;
-            else if (game_state == GAME_PAUSED) game_state = GAME_PLAYING;
-            break;
-        case 'q':
-        case 'Q':
-            game_state = GAME_OVER;
-            break;
-        case ' ':
-            if (game_state == GAME_MENU || game_state == GAME_OVER) {
-                init_snake();
-                game_state = GAME_PLAYING;
-            }
-            break;
+    int ch = getch(); 
+
+    if (ch == 'w' || ch == KEY_UP) {
+        set_direction(UP);
+    } 
+
+    else if (ch == 's' || ch == KEY_DOWN) {
+        set_direction(DOWN);
+    } 
+
+    else if (ch == 'a' || ch == KEY_LEFT) {
+        set_direction(LEFT);
+    } 
+
+    else if (ch == 'd' || ch == KEY_RIGHT) {
+        set_direction(RIGHT);
+    } 
+
+    else if (ch == 'p' || ch == 'P') {
+        if (game_state == GAME_PLAYING) {
+            game_state = GAME_PAUSED;
+        }
+
+        else if (game_state == GAME_PAUSED) {
+            game_state = GAME_PLAYING;
+        }
+    } 
+
+    else if (ch == 'q' || ch == 'Q') {
+        game_state = GAME_OVER;
+    } 
+    
+    else if (ch == ' ') {
+        if (game_state == GAME_MENU || game_state == GAME_OVER) {
+            init_snake();
+            game_state = GAME_PLAYING;
+        }
     }
 }
 
+
 int main() {
-    initscr();             
-    cbreak();               
-    noecho();               
-    keypad(stdscr, TRUE);   
-    nodelay(stdscr, TRUE); 
-    curs_set(0);            
 
     ui_init();              
 

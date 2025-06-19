@@ -1,4 +1,4 @@
-#ifndef PHYSICS_H   //파일 중복 포함 방지
+#ifndef PHYSICS_H   //파일 중복 포함 방지(gpt)
 #define PHYSICS_H
 
 #include <stdlib.h>
@@ -29,4 +29,4 @@ int CrushedToWall(position snakeHead);
 
 
 
-#endif
+#endif //(gpt)

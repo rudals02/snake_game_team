@@ -2,7 +2,7 @@
 RandomApple_asm:
                 push    {lr}
                 sub     sp, sp, #12 @sp<-sp-12
-                bl      rand @r0<-rand()
+                bl      rand @r0<-rand() (gpt)
                 mov     r1, #80 @r1<-width
 apple_loop_x:
             cmp     r0, r1
@@ -24,7 +24,7 @@ apple_y:
         mov     r1, #3 @r1<-3
 apple_loop_size:
                 cmp     r0, r1
-                blt     apple_loop_size
+                blt     apple_sizes
                 sub     r0, r0, r1
                 b       apple_loop_size
 apple_size:

@@ -10,7 +10,7 @@ Size RandomApple(){
     return apple;
 } 
 
-extern Size RandomApple_asm();
+extern Size RandomApple_asm(void);
 
 //벽 충돌 검사
 int CrushedToWall(position snakeHead){

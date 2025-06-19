@@ -4,6 +4,7 @@
 #include "ui.h"
 #include <stdlib.h>
 #include <time.h>
+extern Size RandomApple_asm(void);
 
 // 최대 뱀 길이
 #define MAX_SNAKE_LENGTH 100
@@ -46,7 +47,7 @@ void init_snake(void) {
     srand(time(NULL));
 
     // 첫 사과 생성
-    apple = RandomApple();
+    apple = RandomApple_asm();
 }
 
 // 뱀 이동
@@ -74,7 +75,7 @@ void move_snake(void) {
     if (Snake_eat_apple(snake[0], apple)) {
         increase_score();
         grow_snake(apple.apple_size);
-        apple = RandomApple();  // 새로운 사과 생성
+        apple = RandomApple_asm();  // 새로운 사과 생성
     }
 
     // 자기 몸과 충돌 확인

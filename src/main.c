@@ -8,19 +8,19 @@
 void process_input() {
     int ch = getch(); 
 
-    if (ch == 'w' || ch == KEY_UP) {
+    if (ch == 'w' || ch == 'W' || ch == KEY_UP) {
         set_direction(UP);
     } 
 
-    else if (ch == 's' || ch == KEY_DOWN) {
+    else if (ch == 's' || ch == 'S' || ch == KEY_DOWN) {
         set_direction(DOWN);
     } 
 
-    else if (ch == 'a' || ch == KEY_LEFT) {
+    else if (ch == 'a' || ch == 'A' || ch == KEY_LEFT) {
         set_direction(LEFT);
     } 
 
-    else if (ch == 'd' || ch == KEY_RIGHT) {
+    else if (ch == 'd' || ch== 'D' || ch == KEY_RIGHT) {
         set_direction(RIGHT);
     } 
 
